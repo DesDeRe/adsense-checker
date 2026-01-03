@@ -1,7 +1,8 @@
 import streamlit as st
 import requests
-from bs4 import BeautifulSoup  # Burası tam olarak böyle olmalı
-
+from bs4 import BeautifulSoup
+import google.generativeai as genai  # <--- Hatanın sebebi bu satırın eksik olması
+import time
 
 from fpdf import FPDF
 
@@ -117,4 +118,5 @@ if st.button("Kapsamlı Analizi Başlat"):
             else:
 
                 st.error("Siteye ulaşılamadı. Lütfen URL'yi kontrol et.")
+
 
