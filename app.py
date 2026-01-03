@@ -23,7 +23,7 @@ if st.button("Raporu PDF Olarak İndir"):
 
 # --- GEMINI AYARI ---
 # Kendi API anahtarını buraya eklemelisin: https://aistudio.google.com/app/apikey
-genai.configure(api_key="")
+genai.configure(api_key="AIzaSyB6Rg6-6aVZCPgD8s00pMT0PijIk4MZleg")
 
 class AdSensePro:
     def __init__(self, url):
@@ -118,6 +118,7 @@ if st.button("Kapsamlı Analizi Başlat"):
             else:
 
                 st.error("Siteye ulaşılamadı. Lütfen URL'yi kontrol et.")
+
 
 
 
