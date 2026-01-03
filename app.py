@@ -1,10 +1,6 @@
 import streamlit as st
 import requests
-from bs4 import BeautifulSoup
-import google.generativeai as genai
-import time
-
-
+from bs4 import BeautifulSoup  # Burası tam olarak böyle olmalı
 
 
 from fpdf import FPDF
@@ -121,3 +117,4 @@ if st.button("Kapsamlı Analizi Başlat"):
             else:
 
                 st.error("Siteye ulaşılamadı. Lütfen URL'yi kontrol et.")
+
