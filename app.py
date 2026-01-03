@@ -4,9 +4,29 @@ from bs4 import BeautifulSoup
 import google.generativeai as genai
 import time
 
+
+
+
+from fpdf import FPDF
+
+def pdf_olustur(veriler, ai_tavsiyesi):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("Arial", size=12)
+    pdf.cell(200, 10, txt="AdSense Onay Analiz Raporu", ln=1, align='C')
+    pdf.ln(10)
+    pdf.multi_cell(0, 10, txt=f"Skor: %{veriler['puan']}\n\nAI Tavsiyeleri:\n{ai_tavsiyesi}")
+    return pdf.output(dest='S').encode('latin-1', 'ignore')
+
+# Streamlit butonunun altına:
+if st.button("Raporu PDF Olarak İndir"):
+    pdf_data = pdf_olustur(sonuc, response.text)
+    st.download_button(label="📥 Dosyayı Kaydet", data=pdf_data, file_name="adsense_rapor.pdf", mime="application/pdf")
+
+
 # --- GEMINI AYARI ---
 # Kendi API anahtarını buraya eklemelisin: https://aistudio.google.com/app/apikey
-genai.configure(api_key="SENIN_API_ANAHTARIN")
+genai.configure(api_key="AIzaSyB6Rg6-6aVZCPgD8s00pMT0PijIk4MZleg")
 
 class AdSensePro:
     def __init__(self, url):
@@ -99,4 +119,5 @@ if st.button("Kapsamlı Analizi Başlat"):
                     for hata in sonuc['hatalar']:
                         st.write(f"❌ {hata}")
             else:
+
                 st.error("Siteye ulaşılamadı. Lütfen URL'yi kontrol et.")
